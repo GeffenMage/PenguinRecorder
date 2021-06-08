@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self'">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="./index.css">
+  <script defer src="./renderer.js"></script>
+  <title>Penguin Recorder</title>
+</head>
+
+<body>
+  <div id="title-bar">
+    <div id="title">Penguin Recorder</div>
+    <div id="title-bar-btns" class="">
+      <button id="min-btn" class="button is-small">
+        <span class="icon is-medium">
+          <i class="fa fa-lg fa-minus"></i>
+        </span>
+      </button>
+      <button id="max-btn" class="button is-small">
+        <span class="icon is-medium">
+          <i class="fa fa-square"></i>
+        </span>
+      </button>
+      <button id="close-btn" class="button is-small">
+        <span class="icon is-medium">
+          <i class="fa fa-lg fa-times"></i>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div class="main pt-4">
+    <div class="page-content">
+      <!--<h1 class="title">⚡ Electron Screen Recorder</h1>-->
+      <div class="video-container has-video">
+        <h1 class="title">Choose a video source to start recording</h1>
+        <video class="main-video"></video>
+      </div>
+    </div>
+    <div class="footer-pane">
+      <div class="video-controls">
+        <button id="startBtn" class="button is-success is-hidden">Start</button>
+        <button id="stopBtn" class="button is-danger is-hidden">Stop</button>
+        <button id="videoSelectBtn" class="button is-link">
+          Choose a Video Source
+        </button>
+      </div>
+    </div>
+    <!-- Modal-->
+    <div id="video-select-modal" class="modal">
+      <div class="modal-background"></div>
+      <div id="video-select-card" class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Select a video source</p>
+          <button class="delete is-medium" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <svg id="loader" width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient x1="8.042%" y1="0%" x2="65.682%" y2="23.865%" id="a">
+                <stop stop-color="#fff" stop-opacity="0" offset="0%" />
+                <stop stop-color="#fff" stop-opacity=".631" offset="63.146%" />
+                <stop stop-color="#fff" offset="100%" />
+              </linearGradient>
+            </defs>
+            <g fill="none" fill-rule="evenodd">
+              <g transform="translate(1 1)">
+                <path d="M36 18c0-9.94-8.06-18-18-18" id="Oval-2" stroke="url(#a)" stroke-width="2">
+                  <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="0.9s"
+                    repeatCount="indefinite" />
+                </path>
+                <circle fill="#fff" cx="36" cy="18" r="1">
+                  <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="0.9s"
+                    repeatCount="indefinite" />
+                </circle>
+              </g>
+            </g>
+          </svg>
+          <div class="video-select-box">
+          </div>
+        </section>
+        <footer class="modal-card-foot is-justify-content-flex-end">
+          <button id="modal-cancel-btn" class="button is-outlined">Cancel</button>
+          <button disabled id="modal-next-btn" class="button is-link is-disabled">Next</button>
+        </footer>
+      </div>
+      <div class="modal-card is-hidden options-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Recording options</p>
+          <button class="delete is-medium" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body has-text-left">
+          <div class="field has-append">
+            <label class="label">Video bit rate</label>
+            <div class="control">
+              <input id="video-bit-rate" class="input" type="number" placeholder="Default: 50000kbps">
+              <div class="input-append">
+                <span class="input-append-text">kbps</span>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Enable Audio?</label>
+            <input hidden class="is-hidden" id="enable-audio" type="checkbox">
+          </div>
+          <div class="tabs is-toggle">
+            <ul>
+              <li class="is-active">
+                <a id="no-audio-select">
+                  <span>No</span>
+                </a>
+              </li>
+              <li>
+                <a id="yes-audio-select">
+                  <span>Yes</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="field has-append">
+            <label class="label">Audio bit rate</label>
+            <div class="control">
+              <input disabled id="audio-bit-rate" class="input is-disabled" type="number" placeholder="Default: 32kbps">
+              <div class="input-append">
+                <span class="input-append-text">kbps</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <footer class="modal-card-foot is-justify-content-flex-end">
+          <button id="modal-return-btn" class="button is-outlined">Back</button>
+          <button id="modal-confirm-btn" class="button is-link">Confirm</button>
+        </footer>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

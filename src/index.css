@@ -1,0 +1,319 @@
+
+:root {
+	--text-primary: #fefefe;
+	--text-secondary: #72767d;
+	--bg-primary: #202225;
+	--bg-secondary: #36393f;
+	--bg-secondary-hover: #26292c;
+	--btn-link: #00B0FF;
+	--btn-link-hover: #037eb8;
+	/* --btn-link: #4752c4; */
+	/* --btn-link-hover: #3941a0; */
+}
+
+html {
+	overflow: hidden;
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+		Arial, sans-serif;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	max-height: 100vh;
+	min-height: 100vh;
+}
+
+body::-webkit-scrollbar {
+	width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+	background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+	background: #6649b8;
+}
+
+/* Window Decoration */
+#title-bar {
+	-webkit-app-region: drag;
+	height: 1.6rem;
+	background-color: var(--bg-primary);
+	padding: 0;
+	margin: 0px;
+}
+
+#title {
+	position: fixed;
+	top: 0px;
+	left: 6px;
+	color: var(--text-secondary);
+}
+
+#title-bar-btns {
+	-webkit-app-region: no-drag;
+	position: fixed;
+	top: 0px;
+	right: 0px;
+}
+
+#title-bar-btns .button {
+	background: transparent;
+	border: none;
+	color: var(--text-secondary);
+	height: inherit;
+	margin: 0;
+}
+
+#title-bar-btns .button:focus {
+	box-shadow: none;
+	border: none;
+}
+
+#title-bar-btns .button:nth-child(1):hover {
+	background-color: #282b2e !important;
+}
+
+#title-bar-btns .button:nth-child(2):hover {
+	background-color: #282b2e !important;
+}
+
+#title-bar-btns .button:last-child:hover {
+	background-color: #ed4245 !important;
+}
+/*--------------------------------------------*/
+
+.button {
+	background-color: var(--bg-secondary);
+	border: none;
+	color: var(--text-primary);
+}
+
+.button:hover {
+	background-color: var(--bg-secondary-hover);
+	color: var(--text-primary);
+}
+
+.button.is-link {
+	background-color: var(--btn-link) !important;
+}
+
+.button.is-link:hover {
+	background-color: var(--btn-link-hover) !important;
+}
+
+/* Main Page */
+.main {
+	background: var(--bg-secondary);
+	color: var(--text-primary);
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
+}
+
+.page-content > * {
+	color: var(--text-primary);
+}
+
+.video-container {
+	height: 75vh;
+	width: fit-content;
+	margin: auto;
+}
+
+.video-container:not(.has-video) {
+	background-color: var(--bg-primary);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.video-container:not(.has-video) .title {
+	color: var(--text-secondary);
+	position: absolute;
+	margin: 0;
+}
+
+.video-container.has-video .title {
+	display: none;
+}
+
+.main-video {
+	width: auto;
+	height: inherit;
+	object-fit: cover;
+}
+
+.main-video.recording {
+	border: 2px solid #f14668;
+}
+
+.footer-pane {
+	width: 100%;
+	background: var(--bg-primary);
+	padding: 16px;
+	position: fixed;
+	bottom: 0;
+}
+
+.video-controls {
+	display: flex;
+	flex-direction: column;
+	width: 300px;
+	margin: auto;
+	gap: 1rem;
+}
+/*--------------------------------------------*/
+
+/* Modal */
+
+.modal-card-head .delete {
+	background-color: var(--bg-primary);
+	color: var(--text-secondary);
+}
+
+#video-select-modal .modal-card-head {
+	background: var(--bg-primary);
+	border-color: transparent;
+}
+
+#video-select-modal .modal-card-head p {
+	color: var(--text-primary);
+}
+
+#video-select-modal .modal-card-body {
+	background: var(--bg-secondary);
+	border-color: transparent;
+}
+
+#video-select-modal .modal-card-foot {
+	background: var(--bg-primary);
+	border-color: transparent;
+}
+
+.video-select-box {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 1rem;
+}
+
+.video-preview {
+	width: 160px;
+	height: 93px;
+	object-fit: fill;
+	transition: all 350ms ease;
+	border: 3px solid transparent;
+	cursor: pointer;
+}
+
+.video-preview:hover {
+	border: 3px solid var(--btn-link-hover);
+	border-radius: 5%;
+}
+
+.video-selected {
+	border: 3px solid var(--btn-link);
+	border-radius: 5%;
+}
+
+.video-preview + label {
+	display: block;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	max-width: 22ch;
+}
+
+.slide-from-left:not(.is-hidden) {
+	animation: entry-left 0.5s ease;
+}
+
+.options-card .modal-card-body label {
+	color: var(--text-secondary) !important;
+}
+
+.options-card:not(.is-hidden) {
+	animation: entry-right 0.5s ease;
+}
+
+.tabs > ul li:not(.is-active) a {
+	border-color: var(--bg-primary);
+	background-color: var(--bg-primary);
+	color: var(--text-secondary) !important;
+}
+
+.tabs > ul li a:hover {
+	background-color: var(--btn-link-hover) !important;
+	border-color: var(--bg-primary) !important;
+}
+
+.tabs > ul li.is-active a {
+	background-color: var(--btn-link) !important;
+	border-color: var(--bg-primary) !important;
+}
+
+.field.has-append .control{
+	display: flex;
+	align-items: center;
+}
+
+.field.has-append .control .input{
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.input-append{
+	display: flex;
+}
+
+.input-append-text{
+	border-color: var(--bg-primary);
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+    padding: calc(0.6rem - 2px);
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-left-color: var(--bg-secondary);
+}
+
+/*--------------------------------------------*/
+
+@keyframes entry-right {
+	from {
+		transform: translateX(80%);
+	}
+	to {
+		transform: translate(0);
+	}
+}
+
+@keyframes entry-left {
+	from {
+		transform: translateX(-80%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
+@keyframes exit-left {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+@keyframes exit-right {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(50%);
+	}
+}
