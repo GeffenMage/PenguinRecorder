@@ -1,8 +1,8 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, Tray } = require('electron');
 const path = require('path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
-if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
+if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
@@ -14,7 +14,7 @@ const createWindow = () => {
     minHeight: 768,
     minWidth: 1200,
     resizable: false,
-    icon: path.join(__dirname, 'favicon.ico'),
+    icon: 'src/favicon.ico',
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
