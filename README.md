@@ -1,7 +1,12 @@
-# Penguin Recorder
 <div align="center">
-    [![PenguinRecorderIcon](./src/favicon.ico)]()
+    <h1>Penguin Recorder</h1>
 </div>
+    
+<div align="center">
+    <img src="./src/favicon.ico">
+</div>
+
+<hr>
 
 A screen recorder made with Electron, javascript and NodeJs
 
